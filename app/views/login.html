@@ -1,0 +1,19 @@
+<md-toolbar class="md-warn" ng-show="vm.errorMessage">
+	<div class="md-toolbar-tools">
+		<p class="md-flex" ng-bind="vm.errorMessage"></p>
+	</div>
+</md-toolbar>
+
+<h1>Log in</h1>
+
+<form name="vm.loginForm" ng-submit="vm.submitLogin($event)" novalidate>
+	<md-input-container>
+		<label>Email</label>
+		<input type="email" name="email" />
+	</md-input-container>
+	<md-input-container>
+		<label>Password</label>
+		<input type="password" name="password" />
+	</md-input-container>
+	<md-button class="md-raised md-primary" type="submit">Log in</md-button>
+</form>
