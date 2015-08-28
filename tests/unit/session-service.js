@@ -1,10 +1,10 @@
 describe('SessionService', function() {
-	beforeEach(module('ucApp'));
-
 	var session,
 		browserStorage;
 
-	beforeEach(inject(function(_session_, _browserStorage_){
+	beforeEach(module('ucApp'));
+
+	beforeEach(inject(function(_session_, _browserStorage_) {
 		// The injector unwraps the underscores (_) from around the parameter names when matching
 		browserStorage = _browserStorage_;
 		session = _session_;

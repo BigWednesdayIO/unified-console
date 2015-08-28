@@ -1,29 +1,29 @@
-module.exports = function(config){
+module.exports = function(config) {
 	var wiredep = require('wiredep'),
 		bowerFiles = wiredep({devDependencies: true}).js;
 
 	config.set({
 
-		basePath : '../',
+		basePath: '../',
 
-		files : bowerFiles.concat([
+		files: bowerFiles.concat([
 			'app/assets/js/app.js',
 			'tests/unit/*.js'
 		]),
 
-		autoWatch : true,
+		autoWatch: true,
 
 		frameworks: ['jasmine'],
 
-		browsers : ['Chrome'],
+		browsers: ['Chrome'],
 
-		plugins : [
+		plugins: [
 			'karma-chrome-launcher',
 			'karma-jasmine',
 			'karma-junit-reporter'
 		],
 
-		junitReporter : {
+		junitReporter: {
 			outputFile: 'test_out/unit.xml',
 			suite: 'unit'
 		}

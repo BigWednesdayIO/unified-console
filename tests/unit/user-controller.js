@@ -1,11 +1,11 @@
 describe('LoginController', function() {
-	beforeEach(module('ucApp'));
-
 	var $controller,
 		$rootScope,
 		browserStorage;
 
-	beforeEach(inject(function(_$controller_, _$rootScope_, _browserStorage_){
+	beforeEach(module('ucApp'));
+
+	beforeEach(inject(function(_$controller_, _$rootScope_, _browserStorage_) {
 		// The injector unwraps the underscores (_) from around the parameter names when matching
 		$controller = _$controller_;
 		$rootScope = _$rootScope_;

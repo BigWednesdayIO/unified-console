@@ -1,12 +1,12 @@
 describe('LoginController', function() {
-	beforeEach(module('ucApp'));
-
 	var $controller,
 		$event = {
 			preventDefault: function() {}
 		};
 
-	beforeEach(inject(function(_$controller_){
+	beforeEach(module('ucApp'));
+
+	beforeEach(inject(function(_$controller_) {
 		// The injector unwraps the underscores (_) from around the parameter names when matching
 		$controller = _$controller_;
 	}));
