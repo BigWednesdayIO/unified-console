@@ -35,14 +35,6 @@ gulp.task('build:js', function() {
 		.pipe(connect.reload());
 });
 
-gulp.task('wiredep', function() {
-	return gulp
-		.src('app/index.html')
-		.pipe(wiredep())
-		.pipe(gulp.dest('app/index.html'))
-		.pipe(connect.reload());
-});
-
 gulp.task('build', ['wiredep', 'build:css', 'build:js']);
 
 gulp.task('lint', function() {
@@ -76,7 +68,6 @@ gulp.task('watch', function() {
 	gulp.watch('app/assets/scss/{,*/}*.scss', ['sass']);
 	gulp.watch('app/assets/js/{main,*/*}.js', ['lint', 'build:js']);
 	gulp.watch('app/{views,assets/partials}/{,*/}*.html', ['reload']);
-	gulp.watch('bower.json', ['wiredep']);
 });
 
 gulp.task('default', ['serve', 'watch']);

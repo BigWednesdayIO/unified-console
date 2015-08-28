@@ -8,11 +8,8 @@ function AuthenticationService ($http, $q, API, session) {
 			data: credentials
 		})
 			.then(function(response) {
-				if (typeof response.data !== 'object') {
-					return $q.reject(response);
-				}
-				session.storeInfo(response.data);
-				return response.data;
+				session.storeInfo(response);
+				return response;
 			});
 	};
 
@@ -23,7 +20,7 @@ function AuthenticationService ($http, $q, API, session) {
 		})
 			.then(function(response) {
 				session.destroy();
-				return response.data;
+				return response;
 			});
 	};
 }
