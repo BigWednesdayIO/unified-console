@@ -34,5 +34,5 @@ function BasicValidationInterceptor ($q, $log) {
 }
 
 angular
-	.module('ppApp')
+	.module('ucApp')
 	.factory('BasicValidationInterceptor', BasicValidationInterceptor);

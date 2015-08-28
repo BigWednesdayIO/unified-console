@@ -18,5 +18,5 @@ function UserService ($http, $q, API, session) {
 }
 
 angular
-	.module('ppApp')
+	.module('ucApp')
 	.service('userService', UserService);

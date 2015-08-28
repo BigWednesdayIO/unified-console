@@ -3,5 +3,5 @@ function BrowserStorageService ($window) {
 }
 
 angular
-	.module('ppApp')
+	.module('ucApp')
 	.factory('browserStorage', BrowserStorageService);

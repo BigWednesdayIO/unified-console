@@ -19,5 +19,5 @@ function UserController ($rootScope, $state, authentication, session) {
 }
 
 angular
-	.module('ppApp')
+	.module('ucApp')
 	.controller('UserController', UserController);

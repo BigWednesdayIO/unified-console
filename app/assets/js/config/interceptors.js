@@ -5,5 +5,5 @@ function InterceptorsConfig ($httpProvider) {
 }
 
 angular
-	.module('ppApp')
+	.module('ucApp')
 	.config(InterceptorsConfig);

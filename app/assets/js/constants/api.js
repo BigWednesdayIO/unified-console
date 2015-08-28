@@ -9,5 +9,5 @@ function APIConstant () {
 }
 
 angular
-	.module('ppApp')
+	.module('ucApp')
 	.constant('API', APIConstant());

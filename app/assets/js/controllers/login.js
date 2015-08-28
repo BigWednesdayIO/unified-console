@@ -29,5 +29,5 @@ LoginController.resolve = /* @ngInject */ {
 };
 
 angular
-	.module('ppApp')
+	.module('ucApp')
 	.controller('LoginController', LoginController);

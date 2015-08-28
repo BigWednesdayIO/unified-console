@@ -26,5 +26,5 @@ function SessionService (browserStorage) {
 }
 
 angular
-	.module('ppApp')
+	.module('ucApp')
 	.factory('session', SessionService);
