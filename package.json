@@ -6,7 +6,6 @@
   "scripts": {
     "postinstall": "bower install && npm run wiredep",
     "test": "gulp lint && protractor ./tests/protractor.conf.js",
-    "pretest": "webdriver-manager update && webdriver-manager start &",
     "wiredep": "wiredep -s app/index.html"
   },
   "author": "Big Wednesday IO",

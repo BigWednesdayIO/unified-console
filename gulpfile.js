@@ -35,7 +35,7 @@ gulp.task('build:js', function() {
 		.pipe(connect.reload());
 });
 
-gulp.task('build', ['wiredep', 'build:css', 'build:js']);
+gulp.task('build', ['build:css', 'build:js']);
 
 gulp.task('lint', function() {
 	return gulp
