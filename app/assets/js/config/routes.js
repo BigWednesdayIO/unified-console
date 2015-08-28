@@ -8,6 +8,8 @@ function RoutingConfig ($stateProvider, $urlRouterProvider, $locationProvider) {
 		})
 		.state('dashboard', {
 			url: '/dashboard',
+			controller: 'DashboardController as vm',
+			resolve: DashboardController.resolve,
 			templateUrl: 'views/dashboard.html'
 		});
 
