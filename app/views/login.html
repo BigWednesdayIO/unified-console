@@ -9,11 +9,11 @@
 <form name="vm.loginForm" ng-submit="vm.submitLogin($event)" novalidate>
 	<md-input-container>
 		<label>Email</label>
-		<input type="email" name="email" />
+		<input type="email" name="email" ng-model="vm.email" required />
 	</md-input-container>
 	<md-input-container>
 		<label>Password</label>
-		<input type="password" name="password" />
+		<input type="password" name="password" ng-model="vm.password" required />
 	</md-input-container>
 	<md-button class="md-raised md-primary" type="submit">Log in</md-button>
 </form>
