@@ -4,6 +4,6 @@ describe('My app', function() {
 	});
 
 	it('should have a title', function() {
-		expect(browser.getTitle()).toEqual('Big Wednesday IO');
+		expect(browser.getTitle()).toEqual('Unified Console | Big Wednesday IO');
 	});
 });
