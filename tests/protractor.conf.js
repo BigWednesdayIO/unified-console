@@ -2,8 +2,7 @@ exports.config = {
 	allScriptsTimeout: 11000,
 
 	specs: [
-		'e2e/*.js',
-		'unit/*.js'
+		'e2e/*.js'
 	],
 
 	capabilities: {
@@ -18,7 +17,7 @@ exports.config = {
 
 	plugins: [{
 		chromeA11YDevTools: true,
-		path: '../node_modules/protractor/plugins/accessibility/index.js'
+		path: require.resolve('protractor/plugins/accessibility/index.js')
 	}],
 
 	jasmineNodeOpts: {
