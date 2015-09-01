@@ -18,20 +18,17 @@ describe('BrowserStorageService', function() {
 		it('should allow a specific value to be removed', function() {
 			browserStorage.setItem('foo', 'bar');
 			browserStorage.removeItem('foo');
-			expect(browserStorage.getItem('foo')).not.toEqual('bar');
+			expect(browserStorage.getItem('foo')).toBe(null);
 		});
 
 		it('should allow all values to be removed', function() {
 			browserStorage.setItem('foo', 'bar');
 			browserStorage.setItem('bar', 'baz');
 
-			expect(browserStorage.getItem('foo')).toEqual('bar');
-			expect(browserStorage.getItem('bar')).toEqual('baz');
-
 			browserStorage.clear();
 
-			expect(browserStorage.getItem('foo')).not.toEqual('bar');
-			expect(browserStorage.getItem('bar')).not.toEqual('baz');
+			expect(browserStorage.getItem('foo')).toBe(null);
+			expect(browserStorage.getItem('bar')).toBe(null);
 		});
 	});
 });

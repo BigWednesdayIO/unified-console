@@ -61,11 +61,5 @@ describe('SessionService', function() {
 		it('should subsequently exist', function() {
 			expect(session.exists()).toBeTruthy();
 		});
-
-		it('should return the info used when created', function() {
-			var info = session.getInfo();
-			expect(info.token).toEqual('my token');
-			expect(info.user_id).toEqual('my id');
-		});
 	});
 });
