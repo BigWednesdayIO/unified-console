@@ -1,0 +1,108 @@
+describe('basic authentication interceptor', function() {
+	var $rootScope,
+		$q,
+		BasicValidationInterceptor,
+		deferred,
+		response;
+
+	function jsonHeaders () {
+		return {
+			'content-type': 'application/json'
+		};
+	}
+
+	function responseHandler () {
+		this.success = function() {};
+	}
+
+	function setupResponsePromise () {
+		deferred = $q.defer();
+		response = new responseHandler();
+
+		spyOn(response, 'success');
+
+		deferred
+			.promise
+			.then(response.success);
+	}
+
+	beforeEach(function() {
+		inject(function(_$rootScope_, _$q_) {
+			$rootScope = _$rootScope_;
+			$q = _$q_;
+		});
+	});
+
+	beforeEach(inject(function() {
+		var $injector = angular.injector(['ucApp']);
+		BasicValidationInterceptor = $injector.get('BasicValidationInterceptor');
+	}));
+
+	it('should be defined', function() {
+		expect(BasicValidationInterceptor).toBeDefined();
+	});
+
+	describe('a json response response', function() {
+		beforeEach(setupResponsePromise);
+
+		it('should accept an array', function() {
+			deferred
+				.resolve(BasicValidationInterceptor.response({
+					headers: jsonHeaders,
+					data: [
+						'foo',
+						'bar'
+					]
+				}));
+
+			$rootScope.$digest();
+				
+			expect(response.success).toHaveBeenCalled();
+		});
+
+		it('should accept an object', function() {
+			deferred
+				.resolve(BasicValidationInterceptor.response({
+					headers: jsonHeaders,
+					data: {
+						foo: 'bar'
+					}
+				}));
+
+			$rootScope.$apply();
+				
+			expect(response.success).toHaveBeenCalled();
+		});
+
+		describe('with an empty response body', function() {
+			beforeEach(setupResponsePromise);
+
+			it('should accept a 204', function() {
+				deferred
+					.resolve(BasicValidationInterceptor.response({
+						headers: jsonHeaders,
+						status: 204
+					}));
+
+				$rootScope.$digest();
+
+				expect(response.success).toHaveBeenCalled();
+			});
+
+			it('should reject non-204 responses', function() {
+				deferred
+					.resolve(BasicValidationInterceptor.response({
+						headers: jsonHeaders,
+						config: {
+							url: 'http://foo.bar'
+						},
+						status: 200
+					}));
+
+				$rootScope.$digest();
+
+				expect(response.success).not.toHaveBeenCalled();
+			});
+		});
+	});
+});
