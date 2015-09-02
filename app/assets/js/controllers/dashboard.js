@@ -3,6 +3,10 @@ function DashboardController (rulesData) {
 
 	vm.rules = rulesData;
 
+	vm.ruleIsPublished = function(rule) {
+		return rule.last_published && new Date(rule.last_published) >= new Date(rule.last_updated);
+	};
+
 	vm.editRule = function(rule) {
 		return rule.id;
 	};
