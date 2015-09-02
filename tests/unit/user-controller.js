@@ -18,14 +18,14 @@ describe('LoginController', function() {
 				window.localStorage.clear();
 			});
 
-			it('should be false', function() {
+			it('is false', function() {
 				var vm = new $controller('UserController');
 
 				expect(vm.isLoggedIn).toBe(false);
 			});
 
 			describe('and $state changes', function() {
-				it('should still be false', function() {
+				it('is still false', function() {
 					var vm = new $controller('UserController');
 
 					vm.isLoggedIn = null;
@@ -35,7 +35,7 @@ describe('LoginController', function() {
 					expect(vm.isLoggedIn).toBe(false);
 				});
 
-				it('should be true when values set', function() {
+				it('is true when values are set', function() {
 					var vm = new $controller('UserController');
 
 					// Simulat login
@@ -54,7 +54,7 @@ describe('LoginController', function() {
 				browserStorage.setItem('user_id', ':id');
 			});
 
-			it('should be true', function() {
+			it('is true', function() {
 				var vm = new $controller('UserController');
 
 				expect(vm.isLoggedIn).toBe(true);

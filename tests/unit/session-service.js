@@ -16,28 +16,28 @@ describe('SessionService', function() {
 			browserStorage.setItem('user_id', ':id');
 		});
 
-		it('should exist', function() {
+		it('exists', function() {
 			expect(session.exists()).toBeTruthy();
 		});
 
-		it('should return info', function() {
+		it('returns info', function() {
 			var info = session.getInfo();
 			expect(info.token).toEqual(':token');
 			expect(info.user_id).toEqual(':id');
 		});
 
-		it('should be destroyable', function() {
+		it('is destroyable', function() {
 			session.destroy();
 			expect(session.exists()).toBeFalsy();
 		});
 	});
 
 	describe('an invalid session', function() {
-		it('should not exist', function() {
+		it('does not exist', function() {
 			expect(session.exists()).toBeFalsy();
 		});
 
-		it('should not return info', function() {
+		it('does not return info', function() {
 			var info = session.getInfo();
 			expect(info.token).toBeFalsy();
 			expect(info.user_id).toBeFalsy();
@@ -45,20 +45,22 @@ describe('SessionService', function() {
 	});
 
 	describe('creating a new session', function() {
-		it('should not exist to begin with', function() {
+		beforeEach(function() {
+			browserStorage.clear();
+		});
+
+		it('does not exist to begin with', function() {
 			expect(session.exists()).toBeFalsy();
 		});
 
-		it('should accept credentials', function() {
+		it('does exist after accepting credentials', function() {
 			session.storeInfo({
 				token: 'my token',
 				user: {
 					id: 'my id'
 				}
 			});
-		});
 
-		it('should subsequently exist', function() {
 			expect(session.exists()).toBeTruthy();
 		});
 	});

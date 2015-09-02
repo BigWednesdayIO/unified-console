@@ -12,7 +12,7 @@ describe('LoginController', function() {
 	}));
 
 	describe('vm.errorMessage', function() {
-		it('should not be defined initially', function() {
+		it('is not defined initially', function() {
 			var vm = new $controller('LoginController');
 
 			expect(vm.errorMessage).toBeFalsy();
@@ -25,7 +25,7 @@ describe('LoginController', function() {
 				vm = new $controller('LoginController');
 			});
 
-			it('should flag invalid email', function() {
+			it('flags invalid email', function() {
 				vm.loginForm = {
 					$invalid: true,
 					email: {$invalid: true},
@@ -37,7 +37,7 @@ describe('LoginController', function() {
 				expect(vm.errorMessage).toMatch('email');
 			});
 
-			it('should flag invalid password', function() {
+			it('flags invalid password', function() {
 				vm.loginForm = {
 					$invalid: true,
 					email: {$invalid: false},
@@ -49,7 +49,7 @@ describe('LoginController', function() {
 				expect(vm.errorMessage).toMatch('password');
 			});
 
-			it('should not exist for valid form', function() {
+			it('does not exist for valid form', function() {
 				vm.loginForm = {$invalid: false};
 
 				vm.submitLogin($event);

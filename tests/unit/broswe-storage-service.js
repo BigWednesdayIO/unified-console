@@ -9,19 +9,19 @@ describe('BrowserStorageService', function() {
 	}));
 
 	describe('browserStorage', function() {
-		it('should set and retrieve a string', function() {
+		it('sets and retrieves a string', function() {
 			browserStorage.setItem('foo', 'bar');
 
 			expect(browserStorage.getItem('foo')).toEqual('bar');
 		});
 
-		it('should allow a specific value to be removed', function() {
+		it('allows a specific value to be removed', function() {
 			browserStorage.setItem('foo', 'bar');
 			browserStorage.removeItem('foo');
 			expect(browserStorage.getItem('foo')).toBe(null);
 		});
 
-		it('should allow all values to be removed', function() {
+		it('allows all values to be removed', function() {
 			browserStorage.setItem('foo', 'bar');
 			browserStorage.setItem('bar', 'baz');
 
