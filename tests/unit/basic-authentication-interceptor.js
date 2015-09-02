@@ -36,14 +36,14 @@ describe('basic authentication interceptor', function() {
 		});
 	});
 
-	it('should be defined', function() {
+	it('is defined', function() {
 		expect(BasicValidationInterceptor).toBeDefined();
 	});
 
 	describe('a json response response', function() {
 		beforeEach(setupResponsePromise);
 
-		it('should accept an array', function() {
+		it('accepts an array', function() {
 			deferred
 				.resolve(BasicValidationInterceptor.response({
 					headers: jsonHeaders,
@@ -58,7 +58,7 @@ describe('basic authentication interceptor', function() {
 			expect(response.success).toHaveBeenCalled();
 		});
 
-		it('should accept an object', function() {
+		it('accepts an object', function() {
 			deferred
 				.resolve(BasicValidationInterceptor.response({
 					headers: jsonHeaders,
@@ -75,7 +75,7 @@ describe('basic authentication interceptor', function() {
 		describe('with an empty response body', function() {
 			beforeEach(setupResponsePromise);
 
-			it('should accept a 204', function() {
+			it('accepts a 204', function() {
 				deferred
 					.resolve(BasicValidationInterceptor.response({
 						headers: jsonHeaders,
@@ -87,7 +87,7 @@ describe('basic authentication interceptor', function() {
 				expect(response.success).toHaveBeenCalled();
 			});
 
-			it('should reject non-204 responses', function() {
+			it('rejects non-204 responses', function() {
 				deferred
 					.resolve(BasicValidationInterceptor.response({
 						headers: jsonHeaders,

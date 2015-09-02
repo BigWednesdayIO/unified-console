@@ -46,7 +46,7 @@ describe('LoginController', function() {
 			vm = new $controller('DashboardController', {rulesData: rulesData});
 		});
 
-		it('should handle a never published rule', function() {
+		it('handles a never published rule', function() {
 			vm.ruleIsPublished(vm.rules[5]);
 			expect(vm.errorMessage).toBeFalsy();
 		});		
