@@ -26,17 +26,15 @@ describe('basic authentication interceptor', function() {
 			.then(response.success);
 	}
 
+	beforeEach(module('ucApp'));
+
 	beforeEach(function() {
-		inject(function(_$rootScope_, _$q_) {
+		inject(function(_$rootScope_, _$q_, _BasicValidationInterceptor_) {
 			$rootScope = _$rootScope_;
 			$q = _$q_;
+			BasicValidationInterceptor = _BasicValidationInterceptor_
 		});
 	});
-
-	beforeEach(inject(function() {
-		var $injector = angular.injector(['ucApp']);
-		BasicValidationInterceptor = $injector.get('BasicValidationInterceptor');
-	}));
 
 	it('should be defined', function() {
 		expect(BasicValidationInterceptor).toBeDefined();
