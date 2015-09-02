@@ -26,5 +26,5 @@ function AuthenticationService ($http, $q, API, session) {
 }
 
 angular
-	.module('ppApp')
+	.module('ucApp')
 	.service('authentication', AuthenticationService);

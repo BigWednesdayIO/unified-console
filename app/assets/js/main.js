@@ -1,2 +1,2 @@
 angular
-	.module('ppApp', ['ngMaterial', 'ui.router']);
+	.module('ucApp', ['ngMaterial', 'ui.router']);

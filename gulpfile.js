@@ -35,13 +35,14 @@ gulp.task('build:js', function() {
 		.pipe(connect.reload());
 });
 
-gulp.task('build', ['wiredep', 'build:css', 'build:js']);
+gulp.task('build', ['build:css', 'build:js']);
 
 gulp.task('lint', function() {
 	return gulp
 		.src([
 			'gulpfile.js',
 			'app/assets/js/{,*/}*.js',
+			'tests/{,e2e/,unit/}*.js',
 		])
 		.pipe(eslint())
 		.pipe(eslint.format())

@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en-GB" ng-app="ppApp">
+<html lang="en-GB" ng-app="ucApp">
 	<head>
 		<meta charset="utf-8" />
 		<meta http-equiv="x-ua-compatible" content="ie=edge" />
-		<title>Big Wednesday IO</title>
+		<title>Unified Console | Big Wednesday IO</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 		<link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
@@ -19,7 +19,7 @@
 	<body layout="column">
 		<md-toolbar layout="row">
 			<div class="md-toolbar-tools">
-				<h2>Personalisation Portal</h2>
+				<h2>Unified Console</h2>
 				<span flex></span>
 				<div class="user-status" ng-controller="UserController as user" ng-show="user.isLoggedIn">
 					<span ng-bind="user.email"></span> <md-button class="md-raised" ng-click="user.logOut($event)">Log out</md-button>
@@ -33,6 +33,7 @@
 		<script src="assets/vendor/angular-animate/angular-animate.js"></script>
 		<script src="assets/vendor/angular-aria/angular-aria.js"></script>
 		<script src="assets/vendor/angular-material/angular-material.js"></script>
+		<script src="assets/vendor/angular-mocks/angular-mocks.js"></script>
 		<script src="assets/vendor/angular-ui-router/release/angular-ui-router.js"></script>
 		<!-- endbower -->
 		<script src="/assets/js/app.js"></script>

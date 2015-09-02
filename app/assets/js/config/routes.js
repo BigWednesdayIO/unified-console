@@ -17,5 +17,5 @@ function RoutingConfig ($stateProvider, $urlRouterProvider, $locationProvider) {
 }
 
 angular
-	.module('ppApp')
+	.module('ucApp')
 	.config(RoutingConfig);
