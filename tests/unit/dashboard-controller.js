@@ -3,32 +3,22 @@ describe('LoginController', function() {
 		rulesData = [
 			{
 				id: "001",
-				name: "Highlight expensive products",
+				name: "Published and unpublished match",
 				last_updated: "2015-08-18T06:36:40+00:00",
-				last_published: "2015-08-28T16:30:45+00:00"
+				last_published: "2015-08-18T06:36:40+00:00"
 			}, {
 				id: "002",
-				name: "Highlight cheap products",
+				name: "Updated, then published",
 				last_updated: "2015-08-18T06:36:40+00:00",
 				last_published: "2015-08-28T16:30:45+00:00"
 			}, {
 				id: "003",
-				name: "Canned results for 'help'",
+				name: "Updated more recently than published",
 				last_updated: "2015-08-18T06:36:40+00:00",
-				last_published: "2015-08-28T16:30:45+00:00"
+				last_published: "2015-08-08T16:30:45+00:00"
 			}, {
 				id: "004",
-				name: "Canned results for 'sale'",
-				last_updated: "2015-08-18T06:36:40+00:00",
-				last_published: "2015-08-28T16:30:45+00:00"
-			}, {
-				id: "005",
-				name: "Test promo",
-				last_updated: "2015-08-18T06:36:40+00:00",
-				last_published: null
-			}, {
-				id: "006",
-				name: "Test promo 2",
+				name: "Never published",
 				last_updated: "2015-08-18T06:36:40+00:00",
 				last_published: null
 			}
@@ -46,9 +36,34 @@ describe('LoginController', function() {
 			vm = new $controller('DashboardController', {rulesData: rulesData});
 		});
 
-		it('handles a never published rule', function() {
-			vm.ruleIsPublished(vm.rules[5]);
-			expect(vm.errorMessage).toBeFalsy();
-		});		
+		it('is true when updated and published match', function() {
+			expect(vm.ruleIsPublished(vm.rules[0])).toBeTruthy();
+		});
+
+		it('is true when published is after updated', function() {
+			expect(vm.ruleIsPublished(vm.rules[1])).toBeTruthy();
+		});
+
+		it('is false when updated is after published', function() {
+			expect(vm.ruleIsPublished(vm.rules[2])).toBeFalsy();
+		});
+
+		it('is false when never published', function() {
+			expect(vm.ruleIsPublished(vm.rules[3])).toBeFalsy();
+		});
 	});
+
+	describe('vm.rules', function() {
+		beforeEach(function() {
+			vm = new $controller('DashboardController', {rulesData: rulesData});
+		});
+
+		it('is defined', function() {
+			expect(vm.rules).toBeDefined();
+		});
+
+		it('has as many rules as rulesData', function() {
+			expect(vm.rules.length).toBe(rulesData.length);
+		});
+	})
 });
