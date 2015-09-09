@@ -11,13 +11,13 @@ describe('basic authentication interceptor', function() {
 		};
 	}
 
-	function responseHandler () {
+	function ResponseHandler () {
 		this.success = function() {};
 	}
 
 	function setupResponsePromise () {
 		deferred = $q.defer();
-		response = new responseHandler();
+		response = new ResponseHandler();
 
 		spyOn(response, 'success');
 
@@ -53,7 +53,7 @@ describe('basic authentication interceptor', function() {
 					]
 				}));
 
-			$rootScope.$digest();
+			$rootScope.$apply();
 				
 			expect(response.success).toHaveBeenCalled();
 		});
@@ -82,7 +82,7 @@ describe('basic authentication interceptor', function() {
 						status: 204
 					}));
 
-				$rootScope.$digest();
+				$rootScope.$apply();
 
 				expect(response.success).toHaveBeenCalled();
 			});
@@ -97,7 +97,7 @@ describe('basic authentication interceptor', function() {
 						status: 200
 					}));
 
-				$rootScope.$digest();
+				$rootScope.$apply();
 
 				expect(response.success).not.toHaveBeenCalled();
 			});
