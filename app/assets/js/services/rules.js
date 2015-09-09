@@ -7,6 +7,10 @@ function RulesService ($http, $q, API) {
 			url: API.rules
 		});
 	};
+
+	service.ruleIsPublished = function(rule) {
+		return rule.last_published && new Date(rule.last_published) >= new Date(rule.last_updated);
+	};
 }
 
 angular

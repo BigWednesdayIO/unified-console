@@ -1,11 +1,9 @@
-function DashboardController (rulesData) {
+function DashboardController (rulesService, rulesData) {
 	var vm = this;
 
 	vm.rules = rulesData;
 
-	vm.ruleIsPublished = function(rule) {
-		return rule.last_published && new Date(rule.last_published) >= new Date(rule.last_updated);
-	};
+	vm.ruleIsPublished = rulesService.ruleIsPublished;
 
 	vm.editRule = function(rule) {
 		return rule.id;
