@@ -8,6 +8,7 @@ module.exports = function(config) {
 
 		files: bowerFiles.concat([
 			'app/assets/js/app.js',
+			'tests/doubles/*.js',
 			'tests/unit/*.js'
 		]),
 

@@ -22,11 +22,11 @@
 				<h2>Unified Console</h2>
 				<span flex></span>
 				<div class="user-status" ng-controller="UserController as user" ng-show="user.isLoggedIn">
-					<span ng-bind="user.email"></span> <md-button class="md-raised" ng-click="user.logOut($event)">Log out</md-button>
+					<span class="md-subhead" ng-bind="user.email"></span> <md-button class="md-raised" ng-click="user.logOut($event)">Log out</md-button>
 				</div>
 			</div>
 		</md-toolbar>
-		<main ui-view></main>
+		<md-content layout-padding ui-view></md-content>
 
 		<!-- bower:js -->
 		<script src="assets/vendor/angular/angular.js"></script>

@@ -1,7 +1,17 @@
-function UserController ($rootScope, $state, authentication, session) {
+function UserController ($rootScope, $state, authentication, session, userService) {
 	var vm = this;
 
-	vm.isLoggedIn = session.exists();
+	function refreshUserInfo () {
+		vm.isLoggedIn = session.exists();
+
+		if (vm.isLoggedIn) {
+			userService
+				.getUserInfo()
+				.then(function(info) {
+					vm.email = info.email;
+				});
+		}
+	}
 
 	vm.logOut = function(e) {
 		e.preventDefault();
@@ -13,9 +23,8 @@ function UserController ($rootScope, $state, authentication, session) {
 			});
 	};
 
-	$rootScope.$on('$stateChangeStart', function() {
-		vm.isLoggedIn = session.exists();
-	});
+	refreshUserInfo();
+	$rootScope.$on('$stateChangeStart', refreshUserInfo);
 }
 
 angular

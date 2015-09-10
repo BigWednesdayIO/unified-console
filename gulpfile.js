@@ -27,6 +27,8 @@ gulp.task('build:js', function() {
 			'app/assets/js/main.js',
 			'app/assets/js/{config,constants,controllers,directives,filters,interceptors,services}/*.js'
 		])
+		.pipe(eslint())
+		.pipe(eslint.format())
 		.pipe(concat('app.js'))
 		.pipe(ngAnnotate({
 			single_quotes: true
@@ -62,13 +64,15 @@ gulp.task('serve', function() {
 });
 
 gulp.task('reload', function() {
-	connect.reload();
+	return gulp
+		.src('app/**/*.html')
+		.pipe(connect.reload());
 });
 
 gulp.task('watch', function() {
 	gulp.watch('app/assets/scss/{,*/}*.scss', ['sass']);
-	gulp.watch('app/assets/js/{main,*/*}.js', ['lint', 'build:js']);
-	gulp.watch('app/{views,assets/partials}/{,*/}*.html', ['reload']);
+	gulp.watch('app/assets/js/{main,*/*}.js', ['build:js']);
+	gulp.watch('app/**/*.html', ['reload']);
 });
 
 gulp.task('default', ['serve', 'watch']);
