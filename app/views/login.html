@@ -6,14 +6,8 @@
 
 <h1>Log in</h1>
 
-<form name="vm.loginForm" ng-submit="vm.submitLogin($event)" novalidate>
-	<md-input-container>
-		<label>Email</label>
-		<input type="email" name="email" ng-model="vm.email" required />
-	</md-input-container>
-	<md-input-container>
-		<label>Password</label>
-		<input type="password" name="password" ng-model="vm.password" required />
-	</md-input-container>
-	<md-button class="md-raised md-primary" type="submit">Log in</md-button>
-</form>
+<section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+	<md-button ng-repeat="provider in vm.authenticationProviders" class="md-fab md-primary" aria-label="Log in with {{provider.name}}" ng-click="vm.loginWith(provider)">
+		<md-icon md-svg-src="/assets/images/icons/{{provider.name}}.svg"></md-icon>
+	</md-button>
+</section>

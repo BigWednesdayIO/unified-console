@@ -1,6 +1,13 @@
 function AuthenticationService ($http, $q, API, session) {
 	var service = this;
 
+	service.getProviders = function() {
+		return $http({
+			url: API.authentication_providers,
+			method: 'GET'
+		});
+	}
+
 	service.create = function(credentials) {
 		return $http({
 			url: API.authentication,

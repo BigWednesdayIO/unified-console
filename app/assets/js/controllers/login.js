@@ -1,39 +1,18 @@
-function LoginController ($state, authentication) {
+function LoginController ($state, $window, authentication, authenticationProviders) {
 	var vm = this;
 
-	vm.submitLogin = function(e) {
-		var fields = [];
+	vm.authenticationProviders = authenticationProviders;
 
-		e.preventDefault();
-
-		vm.errorMessage = null;
-
-		if (vm.loginForm.$invalid) {
-			vm.errorMessage = 'Please enter a valid ';
-			if (vm.loginForm.email.$invalid) {
-				fields.push('email address');
-			}
-			if (vm.loginForm.password.$invalid) {
-				fields.push('password');
-			}
-			vm.errorMessage += fields.join(' and ');
-			return;
-		}
-
-		authentication
-			.create({
-				email: vm.email,
-				password: vm.password
-			})
-			.then(function() {
-				$state.go('dashboard');
-			}, function(error) {
-				vm.errorMessage = error.message;
-			});
-	};
+	vm.loginWith = function(provider) {
+		$window.location = provider.url;
+	}
 }
 
 LoginController.resolve = /* @ngInject */ {
+	authenticationProviders: function(authentication) {
+		return authentication
+			.getProviders();
+	},
 	sessionExists: function($location, $state, session) {
 		if (session.exists()) {
 			// return $state.go('dashboard');

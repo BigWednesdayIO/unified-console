@@ -1,4 +1,4 @@
-function SessionService (browserStorage) {
+function SessionService ($location, browserStorage) {
 	var service = {};
 
 	service.getInfo = function() {
@@ -14,8 +14,23 @@ function SessionService (browserStorage) {
 	};
 
 	service.exists = function() {
-		var session = service.getInfo();
-		return !!(session.token && session.user_id);
+		var session = service.getInfo(),
+			exists = !!(session.token && session.user_id),
+			token;
+		if (!exists) {
+			// Temporary
+			token = $location.search().token;
+			if (token) {
+				service.storeInfo({
+					token: token,
+					user: {
+						id: 3
+					}
+				});
+				exists = true;
+			}
+		}
+		return exists;
 	};
 
 	service.destroy = function() {
