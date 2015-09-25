@@ -11,6 +11,12 @@ function RoutingConfig ($stateProvider, $urlRouterProvider, $locationProvider) {
 			controller: 'DashboardController as vm',
 			resolve: DashboardController.resolve,
 			templateUrl: 'views/dashboard.html'
+		})
+		.state('applications', {
+			url: '/applications',
+			controller: 'ApplicationsController as vm',
+			resolve: ApplicationsController.resolve,
+			templateUrl: 'views/applications.html'
 		});
 
 	$urlRouterProvider.otherwise("/");
