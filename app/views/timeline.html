@@ -1,0 +1,102 @@
+<style>
+.positive {
+	color: #4CAF50;
+}
+
+.positive::before {
+	content: '+';
+}
+
+.negative {
+	color: rgb(244,67,54);
+}
+
+.top-line {
+	color: rgba(0,0,0,0.54);
+	margin-bottom: 6px;
+}
+
+md-list-item.md-3-line .md-list-item-text h4 {
+	margin-top: 6px;
+}
+
+md-list-item .md-secondary-container {
+	top: 16px;
+	transform: none;
+	text-align: right;
+}
+
+.md-subheader {
+	position: relative;
+	padding-bottom: 6px;
+	text-align: center;
+}
+
+.md-subheader:not(.md-sticky-no-effect)::after {
+	background: linear-gradient(to left, transparent, rgba(0,0,0,0.12), transparent);
+	content: '';
+	height: 1px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+}
+
+.timeline {
+	padding-left: 24px;
+	position: relative;
+}
+
+.timeline::before {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 8px;
+	left: 16px;
+	bottom: 8px;
+	width: 1px;
+	background: rgba(0,0,0,0.12);
+}
+
+.timeline md-list-item::before {
+	content: '';
+	display: block;
+	width: 12px;
+	height: 12px;
+	color: rgba(0,0,0,0.12);
+	border: 2px solid;
+	border-radius: 50%;
+	background: white;
+
+    position: absolute;
+    top: 17px;
+    left: -14px;
+}
+
+.timeline md-list-item.positive::before {
+	color: #4CAF50;
+}
+
+.timeline md-list-item.negative::before {
+	color: rgb(244,67,54);
+}
+</style>
+
+<md-content>
+	<md-subheader class="md-no-sticky" ng-repeat-start="day in vm.timeline" ng-bind="day.name"></md-subheader>
+	<md-list ng-repeat-end class="timeline">
+		<md-list-item class="md-3-line" ng-repeat="event in day.events" ng-class="{
+			'positive': event.difference > 0,
+			'negative': event.difference < 0
+		}">
+			<div class="md-list-item-text">
+				<div class="top-line md-caption" ng-bind="event.time | date: 'hh:mm'"></div>
+				<h3 ng-bind="event.outlet"></h3>
+				<h4 ng-bind="event.location"></h4>
+			</div>
+			<div class="md-secondary-container">
+				<div class="top-line md-caption" ng-bind="event.value | currency: '£'"></div>
+			</div>
+		</md-list-item>
+	</md-list>
+</md-content>

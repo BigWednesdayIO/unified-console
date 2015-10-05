@@ -17,6 +17,11 @@ function RoutingConfig ($stateProvider, $urlRouterProvider, $locationProvider) {
 			controller: 'ApplicationsController as vm',
 			resolve: ApplicationsController.resolve,
 			templateUrl: 'views/applications.html'
+		})
+		.state('timeline', {
+			url: '/timeline',
+			controller: 'TimelineController as vm',
+			templateUrl: 'views/timeline.html'
 		});
 
 	$urlRouterProvider.otherwise("/");
