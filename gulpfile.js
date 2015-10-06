@@ -8,11 +8,16 @@ var gulp = require('gulp'),
 	wiredep = require('wiredep'),
 	connect = require('gulp-connect');
 
+function handleError (err) {
+	console.log(err.toString());
+	this.emit('end');
+}
+
 gulp.task('build:css', function() {
 	return gulp
 		.src('app/assets/scss/*.scss')
 		.pipe(sourcemaps.init())
-		.pipe(sass())
+		.pipe(sass().on('error', handleError))
 		.pipe(autoprefixer({
 			browsers: ['last 3 versions'],
 		}))
@@ -32,7 +37,7 @@ gulp.task('build:js', function() {
 		.pipe(concat('app.js'))
 		.pipe(ngAnnotate({
 			single_quotes: true
-		}))
+		}).on('error', handleError))
 		.pipe(gulp.dest('app/assets/js'))
 		.pipe(connect.reload());
 });
@@ -70,9 +75,9 @@ gulp.task('reload', function() {
 });
 
 gulp.task('watch', function() {
-	gulp.watch('app/assets/scss/{,*/}*.scss', ['sass']);
+	gulp.watch('app/assets/scss/{,*/_}*.scss', ['build:css']);
 	gulp.watch('app/assets/js/{main,*/*}.js', ['build:js']);
-	gulp.watch('app/**/*.html', ['reload']);
+	gulp.watch('app/{index,views/{,*/}*}.html', ['reload']);
 });
 
-gulp.task('default', ['serve', 'watch']);
+gulp.task('default', ['build', 'serve', 'watch']);
