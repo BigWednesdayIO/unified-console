@@ -1,0 +1,52 @@
+<div class="action-bar" layout="row" layout-align="center center">
+	<md-select ng-model="vm.selectedSort" aria-label="Sort by">
+		<md-option ng-repeat="option in vm.sortOptions" value="{{option.value}}" ng-bind="option.display_name"></md-option>
+	</md-select>
+	<md-menu ng-show="::vm.actions.length">
+		<md-button aria-label="Open demo menu" ng-click="$mdOpenMenu($event)">
+			Actions
+		</md-button>
+		<md-menu-content width="6">
+			<md-menu-item ng-repeat="action in vm.actions">
+				<md-button ng-bind="action" aria-label="{{action}}" ng-click="$mdCloseMenu($event)"></md-button>
+			</md-menu-item>
+		</md-menu-content>
+	</md-menu>
+	<span flex></span>
+	<div class="material-search-wrapper">
+		<md-icon md-svg-src="/assets/images/icons/search.svg"></md-icon>
+		<input type="search" class="material-search material-search--small" placeholder="Search for products" aria-label="Search for products" />
+	</div>
+</div>
+
+<md-list>
+	<md-list-item class="md-2-line md-no-proxy md-with-secondary" ng-repeat="product in vm.products" ng-init="product.quantity = 1">
+		<div class="md-avatar md-avatar--placeholder md-primary {{product.category}}" ></div>
+		<div class="md-list-item-text">
+			<h3>
+				<span ng-bind="product.name"></span>
+				<span style="color: rgba(0,0,0,0.54); padding-left: 1px; font-size: 14px;"> - <span ng-bind="product.id"></span></span>
+			</h3>
+			<p ng-bind="product.description"></p>
+		</div>
+		<div style="padding: 14px 0; color: rgba(0,0,0,0.54);" class="md-body-1">
+			Size: <span ng-bind="product.size"></span>
+		</div>
+		<span flex></span>
+		<span flex></span>
+		<div class="md-secondary-container" layout="row" layout-align="center center">
+			<div class="md-body-1" ng-bind="product.price | currency: '£'" layout-margin></div>
+			
+			<md-input-container md-no-float layout="row" layout-align="center stretch" class="quantity-input-wrapper">
+				<md-button aria-label="Decrease quantity" ng-disabled="product.quantity <= 1" ng-click="product.quantity = product.quantity - 1">&minus;</md-button>
+				<input class="quantity-input" ng-model="product.quantity" type="number" min="1" aria-label="Quantity" />
+				<md-button aria-label="Increase quantity" ng-click="product.quantity = product.quantity + 1">&plus;</md-button>
+			</md-input-container>
+			
+			<md-button class="md-primary md-raised">
+				Add
+			</md-button>
+		</div>
+		<md-divider ng-if="!$last"></md-divider>
+	</md-list-item>
+</md-list>

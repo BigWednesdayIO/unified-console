@@ -1,0 +1,18 @@
+<md-content>
+	<div ng-repeat="refinement in vm.refinements" class="refinement">
+		<md-button class="menu-button md-default-theme" ng-click="vm.openNav = (vm.openNav === refinement.key) ? '' : refinement.key" ng-class="{'is-open': vm.openNav === refinement.key}" aria-label="{{refinement.display_name}}">
+			<md-icon md-svg-src="/assets/images/icons/{{refinement.key}}.svg"></md-icon>
+			<label ng-bind="refinement.display_name"></label>
+			<span flex></span>
+			<md-icon class="open-indicator" md-svg-src="/assets/images/icons/chevron-down.svg"></md-icon>
+		</md-button>
+
+		<md-list ng-show="vm.openNav === refinement.key" class="animate-slide">
+			<md-list-item ng-repeat="value in refinement.values">
+				<md-checkbox ng-model="vm.selectedRefinements[refinement.key][value.value]" class="md-primary" aria-label="{{value.display_name}}"></md-checkbox>
+				<p ng-bind="value.display_name"></p>
+				<span class="md-secondary md-caption" style="margin-top: -2px" ng-bind="value.count"></span>
+			</md-list-item>
+		</md-list>
+	</div>
+</md-content>

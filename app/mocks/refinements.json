@@ -1,0 +1,191 @@
+[
+	{
+		"key": "category",
+		"type": "discrete",
+		"display_name": "Category",
+		"values": [
+			{
+				"value": "ales-stouts",
+				"display_name": "Ales/Stouts",
+				"count": 107
+			}, {
+				"value": "finest-cask",
+				"display_name": "Finest Cask",
+				"count": 15
+			}, {
+				"value": "craft",
+				"display_name": "Craft",
+				"count": 31
+			}, {
+				"value": "cider",
+				"display_name": "Cider",
+				"count": 72
+			}, {
+				"value": "lager",
+				"display_name": "Lager",
+				"count": 85
+			}, {
+				"value": "spirits",
+				"display_name": "Spirits",
+				"count": 170
+			}, {
+				"value": "ready-to-drink",
+				"display_name": "Ready to Drink",
+				"count": 31
+			}, {
+				"value": "soft-drinks",
+				"display_name": "Soft Drinks",
+				"count": 116
+			}, {
+				"value": "wine",
+				"display_name": "Wine",
+				"count": 192
+			}, {
+				"value": "sundries",
+				"display_name": "Sundries",
+				"count": 13
+			}
+		]
+	}, {
+		"key": "subcategory",
+		"type": "discrete",
+		"display_name": "Subcategory",
+		"values": [
+			{
+				"value": "ales-stouts",
+				"display_name": "Ales/Stouts",
+				"count": 107
+			}, {
+				"value": "finest-cask",
+				"display_name": "Finest Cask",
+				"count": 15
+			}, {
+				"value": "craft",
+				"display_name": "Craft",
+				"count": 31
+			}, {
+				"value": "cider",
+				"display_name": "Cider",
+				"count": 72
+			}, {
+				"value": "lager",
+				"display_name": "Lager",
+				"count": 85
+			}, {
+				"value": "spirits",
+				"display_name": "Spirits",
+				"count": 170
+			}, {
+				"value": "ready-to-drink",
+				"display_name": "Ready to Drink",
+				"count": 31
+			}, {
+				"value": "soft-drinks",
+				"display_name": "Soft Drinks",
+				"count": 116
+			}, {
+				"value": "wine",
+				"display_name": "Wine",
+				"count": 192
+			}, {
+				"value": "sundries",
+				"display_name": "Sundries",
+				"count": 13
+			}
+		]
+	}, {
+		"key": "country",
+		"type": "discrete",
+		"display_name": "Country",
+		"values": [
+			{
+				"value": "ales-stouts",
+				"display_name": "Ales/Stouts",
+				"count": 107
+			}, {
+				"value": "finest-cask",
+				"display_name": "Finest Cask",
+				"count": 15
+			}, {
+				"value": "craft",
+				"display_name": "Craft",
+				"count": 31
+			}, {
+				"value": "cider",
+				"display_name": "Cider",
+				"count": 72
+			}, {
+				"value": "lager",
+				"display_name": "Lager",
+				"count": 85
+			}, {
+				"value": "spirits",
+				"display_name": "Spirits",
+				"count": 170
+			}, {
+				"value": "ready-to-drink",
+				"display_name": "Ready to Drink",
+				"count": 31
+			}, {
+				"value": "soft-drinks",
+				"display_name": "Soft Drinks",
+				"count": 116
+			}, {
+				"value": "wine",
+				"display_name": "Wine",
+				"count": 192
+			}, {
+				"value": "sundries",
+				"display_name": "Sundries",
+				"count": 13
+			}
+		]
+	}, {
+		"key": "brand",
+		"type": "discrete",
+		"display_name": "Brand",
+		"values": [
+			{
+				"value": "ales-stouts",
+				"display_name": "Ales/Stouts",
+				"count": 107
+			}, {
+				"value": "finest-cask",
+				"display_name": "Finest Cask",
+				"count": 15
+			}, {
+				"value": "craft",
+				"display_name": "Craft",
+				"count": 31
+			}, {
+				"value": "cider",
+				"display_name": "Cider",
+				"count": 72
+			}, {
+				"value": "lager",
+				"display_name": "Lager",
+				"count": 85
+			}, {
+				"value": "spirits",
+				"display_name": "Spirits",
+				"count": 170
+			}, {
+				"value": "ready-to-drink",
+				"display_name": "Ready to Drink",
+				"count": 31
+			}, {
+				"value": "soft-drinks",
+				"display_name": "Soft Drinks",
+				"count": 116
+			}, {
+				"value": "wine",
+				"display_name": "Wine",
+				"count": 192
+			}, {
+				"value": "sundries",
+				"display_name": "Sundries",
+				"count": 13
+			}
+		]
+	}
+]

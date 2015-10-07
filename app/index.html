@@ -3,30 +3,42 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta http-equiv="x-ua-compatible" content="ie=edge" />
-		<title>Unified Console | Big Wednesday IO</title>
+		<title>Unified Admin Console | Big Wednesday IO</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 		<link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
 		<link rel="favicon" href="favicon.ico" />
 
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
 		<!-- bower:css -->
 		<link rel="stylesheet" href="assets/vendor/angular-material/angular-material.css" />
 		<!-- endbower -->
 		<link rel="stylesheet" href="/assets/css/app.css" />
 
+		<script src="/assets/js/modernizr-custom.js"></script>
+
 		<base href="/" />
 	</head>
 	<body layout="column">
-		<md-toolbar layout="row">
+		<md-toolbar layout="row" class="md-accent">
 			<div class="md-toolbar-tools">
-				<h2>Unified Console</h2>
+				<h2>Unified Admin Console</h2>
+				<div class="material-search-wrapper">
+					<md-icon md-svg-src="/assets/images/icons/search.svg"></md-icon>
+					<input type="search" class="material-search" placeholder="Search for accounts, outlets, orders or people" aria-label="Search for accounts, outlets, orders or people" />
+				</div>
 				<span flex></span>
 				<div class="user-status" ng-controller="UserController as user" ng-show="user.isLoggedIn">
-					<span class="md-subhead" ng-bind="user.email"></span> <md-button class="md-raised" ng-click="user.logOut($event)">Log out</md-button>
+					<span class="md-subhead" ng-bind="user.email"></span>
 				</div>
 			</div>
 		</md-toolbar>
-		<md-content layout-padding ui-view></md-content>
+		<div ui-view="section-heading"></div>
+		<div layout="row" flex>
+			<md-sidenav class="md-sidenav-left md-whiteframe-z1" md-component-id="left" md-is-locked-open="true" ui-view="sidebar"></md-sidenav>
+			<md-content flex ui-view></md-content>
+		</div>
+		<div ui-view="bottom-drawer"></div>
 
 		<!-- bower:js -->
 		<script src="assets/vendor/angular/angular.js"></script>
@@ -35,6 +47,7 @@
 		<script src="assets/vendor/angular-material/angular-material.js"></script>
 		<script src="assets/vendor/angular-mocks/angular-mocks.js"></script>
 		<script src="assets/vendor/angular-ui-router/release/angular-ui-router.js"></script>
+		<script src="assets/vendor/velocity/velocity.js"></script>
 		<!-- endbower -->
 		<script src="/assets/js/app.js"></script>
 	</body>

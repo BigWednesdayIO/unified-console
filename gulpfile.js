@@ -48,7 +48,7 @@ gulp.task('lint', function() {
 	return gulp
 		.src([
 			'gulpfile.js',
-			'app/assets/js/{,*/}*.js',
+			'app/assets/js/{main,*/*}.js',
 			'tests/{,e2e/,unit/}*.js',
 		])
 		.pipe(eslint())

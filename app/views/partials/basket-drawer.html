@@ -1,0 +1,10 @@
+<md-content class="basket-drawer md-whiteframe-z2">
+	<div layout="row" layout-align="center center" class="basket-drawer__upper">
+		<p>Drag products to a <strong>a trolley circle</strong> to add to that <strong>trolley</strong> &nbsp; <md-icon md-svg-src="/assets/images/icons/cart.svg"></md-icon></p>
+	</div>
+	<div layout="row" layout-padding layout-align="center center" class="basket-drawer__lower">
+		<md-button ng-repeat="basket in vm.baskets" class="md-fab md-fab--large md-warn md-hue-{{$index}}" ng-bind="basket.delivery.date | date: 'MMM dd'" aria-label="{{basket.delivery.date | date: 'MMM dd'}}"></md-button>
+		<md-button class="md-fab md-fab--large md-fab--plus" aria-label="Create new basket">&plus;</md-button>
+		<md-button ng-repeat="basket in vm.baskets" class="md-fab md-fab--large md-primary md-hue-{{$index}}" ng-bind="basket.delivery.date | date: 'MMM dd'" aria-label="{{basket.delivery.date | date: 'MMM dd'}}"></md-button>
+	</div>
+</md-content>

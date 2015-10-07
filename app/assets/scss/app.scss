@@ -1,3 +1,8 @@
+$transition: .3s ease-in-out;
+
+$divider-color: rgba(0, 0, 0, .12);
+$divider: 1px solid $divider-color;
+
 * {
 	&,
 	&::before,
@@ -12,4 +17,237 @@ html {
 
 body {
 	margin: 0;
+}
+
+.md-toolbar-secondary {
+	$height: 56px;
+	
+	min-height: $height;
+	
+	.md-toolbar-tools {
+		height: $height;
+	}
+}
+
+.refinement + .refinement {
+	border-top: $divider;
+}
+
+.md-toolbar-tools > .md-icon-button:first-child {
+	margin-left: -12px;
+}
+
+.menu-button {
+	display: flex;
+	justify-content: flex-start;
+	width: 100%;
+	padding: 8px 16px;
+	margin: 0;
+
+	md-icon:first-child {
+		width: 24px;
+		margin: 0 32px 0 0;
+	}
+
+	+ md-list {
+		padding: 0;
+	}
+
+	.open-indicator {
+		transform: rotate3d(0, 0, 1, 0);
+		transition: transform $transition;
+	}
+
+	&.is-open {
+		// background-color: rgb(238,238,238);
+
+		.open-indicator {
+			transform: rotate3d(0, 0, 1, -180deg);
+		}
+	}
+}
+
+.md-avatar.md-avatar--placeholder {
+	text-align: center;
+	line-height: 42px;
+	color: white;
+
+	&.ales-stouts {
+		background: #3c761b;
+
+		&::before {
+			content: 'A';
+		}
+	}
+
+	&.finest-cask {
+		background: #e39139;
+
+		&::before {
+			content: 'F';
+		}
+	}
+
+	&.craft {
+		background: #4b838e;
+		
+		&::before {
+			content: 'Cr';
+		}
+	}
+
+	&.cider {
+		background: #a6537c;
+		
+		&::before {
+			content: 'C';
+		}
+	}
+
+	&.lager {
+		background: #bd8f04;
+		
+		&::before {
+			content: 'L';
+		}
+	}
+
+	&.spirits {
+		background: #654fa5;
+		
+		&::before {
+			content: 'S';
+		}
+	}
+
+	&.ready-to-drink {
+		background: #5d7fa5;
+		
+		&::before {
+			content: 'R';
+		}
+	}
+
+	&.soft-drinks {
+		background: #cb2c28;
+		
+		&::before {
+			content: 'So';
+		}
+	}
+
+	&.wine {
+		background: #72234a;
+		
+		&::before {
+			content: 'W';
+		}
+	}
+
+	&.sundries {
+		background: #2e7bdd;
+		
+		&::before {
+			content: 'M';
+		}
+	}
+}
+
+.material-search-wrapper {
+	flex: 1;
+	display: flex;
+	position: relative;
+	max-width: 800px;
+	margin-left: 32px;
+	color: rgba(0, 0, 0, .54);
+
+	md-icon {
+		position: absolute;
+		top: 50%;
+		margin-top: -12px;
+		left: 16px;
+		z-index: 2;
+		color: inherit;
+	}
+}
+
+.material-search {
+	background-color: rgba(255, 255, 255, .54);
+	transition: background-color 0.2s;
+	padding: 0 16px 0 68px;
+	box-sizing: border-box;
+	height: 50px;
+	border: none;
+	border-radius: 3px;
+	width: 100%;
+	color: inherit;
+	font-size: 15px;
+	font-weight: 400;
+	outline: none;
+	flex-shrink: 1;
+
+	&--small {
+		height: 40px;
+	}
+}
+
+.action-bar {
+	height: 56px;
+	padding: 0 16px;
+	background-color: rgb(238, 238, 238);
+	color: rgba(0, 0, 0, .87);
+
+	.md-menu {
+		padding: 0;
+	}
+}
+
+md-select + md-select {
+	margin-left: 16px;
+}
+
+.quantity-input-wrapper {
+	padding: 0;
+
+	.quantity-input {
+		order: 0;
+		width: 48px;
+	}
+
+	.md-button {
+		margin: 0 8px;
+		min-width: 30px;
+		min-height: 30px;
+		line-height: 30px;
+		border-radius: 3px;
+		font-size: 16px;
+	}
+}
+
+.md-fab.md-fab {
+	&--large {
+		height: 96px;
+		width: 96px;
+		margin: 16px;
+		text-transform: none;
+	}
+
+	&--plus {
+		font-size: 48px;
+	}
+}
+
+[ui-view]:empty {
+	display: none;
+}
+
+[ui-view='bottom-drawer'] {
+	z-index: 60;
+}
+
+.basket-drawer {
+	&__upper {
+		border: $divider;
+		border-width: 1px 0;
+	}
 }
