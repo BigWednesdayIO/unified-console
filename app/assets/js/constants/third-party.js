@@ -1,3 +1,4 @@
 angular
 	.module('ucApp')
-	.constant('Velocity', window.Velocity);
+	.constant('Velocity', window.Velocity)
+	.constant('_', window._);

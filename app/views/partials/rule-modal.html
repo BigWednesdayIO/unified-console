@@ -3,7 +3,10 @@
 		<md-dialog-content>
 			<h2 class="md-title" ng-bind="::vm.title"></h2>
 
-			<!-- <rule-schedule rule="vm.rule"></rule-schedule> -->
+			<div ng-switch="vm.action.component">
+				<div ng-switch-when="remove-from-listing" rule-remove-from-listing actions="vm.rule.actions"></div>
+				<div ng-switch-when="tier-listing" rule-tier-listing actions="vm.rule.actions"></div>
+			</div>
 
 		</md-dialog-content>
 

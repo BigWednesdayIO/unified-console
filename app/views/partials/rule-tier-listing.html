@@ -1,0 +1,7 @@
+<md-tabs class="md-hue-1" md-dynamic-height md-border-bottom>
+	<md-tab ng-repeat="action in vm.actions" label="{{ vm.tabHeadings[action.name] }}">
+		<md-content class="md-padding">
+			<md-chips ng-model="action.parameters.ids" secondary-placeholder="Type something and hit enter"></md-chips>
+		</md-content>
+	</md-tab>
+</md-tabs>
