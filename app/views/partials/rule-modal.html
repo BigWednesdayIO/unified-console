@@ -1,0 +1,15 @@
+<md-dialog aria-label="Edit rule">
+	<form novalidate name="vm.ruleForm">
+		<md-dialog-content>
+			<h2 class="md-title" ng-bind="::vm.title"></h2>
+
+			<rule-schedule rule="vm.rule"></rule-schedule>
+
+		</md-dialog-content>
+
+		<div class="md-actions">
+			<md-button ng-click="vm.cancel()">Cancel</md-button>
+			<md-button class="md-primary" ng-click="vm.confirm()">OK</md-button>
+		</div>
+	</form>
+</md-dialog>

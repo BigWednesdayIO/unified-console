@@ -1,17 +1,45 @@
-<h1>Dashboard</h1>
+<div class="action-bar" layout="row" layout-align="end center">
+	<div class="list-actions" layout="row" layout-align="center center">
+		<md-button class="md-icon-button" ng-disabled="!vm.selectedRule" aria-label="Edit selected rule">
+			<md-icon md-svg-src="assets/images/icons/edit.svg"></md-icon>
+		</md-button>
+		<md-button class="md-icon-button" ng-disabled="!vm.selectedRule" aria-label="Delete selected rule">
+			<md-icon md-svg-src="assets/images/icons/delete.svg"></md-icon>
+		</md-button>
+		<md-switch class="md-primary" ng-model="vm.pausedFilter" aria-label="Show paused rules"></md-switch>
+	</div>
+</div>
 
 <md-list>
-	<md-list-item class="md-2-line" ng-repeat="rule in vm.rules track by rule.id" ng-click="vm.editRule(rule)">
-		<img ng-src="http://placehold.it/40x40" class="md-avatar" alt="{{rule.name}}" />
+	<md-list-item ng-repeat="rule in vm.rules track by rule.id" class="md-2-line rule" ng-class="{'is-active': vm.selectedRule.id === rule.id}" ng-click="vm.selectRule(rule)">
+		<div class="md-avatar md-avatar--placeholder md-primary" ng-class="rule.tags"></div>
 		<div class="md-list-item-text">
-			<h3 ng-bind="rule.name"></h3>
-			<p layout="row">
-				<span>Last updated: <span ng-bind="rule.last_updated | date: 'd MMM'"></span></span>
-				<span flex></span>
-				<span ng-if="rule.last_published">Last published: <span ng-bind="rule.last_published | date: 'd MMM'"></span></span>
-				<span ng-if="!rule.last_published">Unpublished</span>
+			<h3><a ng-href="rule/{{rule.id}}/" class="rule__name" ng-bind="rule.name"></a></h3>
+			<p class="rule__schedule">
+				<span ng-hide="rule.schedule.start || rule.schedule.end">Always runs</span>
+				<span ng-show="rule.schedule.start">from</span>
+				<span ng-bind="rule.schedule.start"></span>
+				<span ng-show="rule.schedule.end">to</span>
+				<span ng-bind="rule.schedule.end"></span>
 			</p>
 		</div>
+		<md-switch class="md-primary md-secondary" ng-model="rule.paused" aria-label="Pause rule"></md-switch>
 		<md-divider ng-if="!$last"></md-divider>
 	</md-list-item>
 </md-list>
+
+<md-fab-speed-dial md-direction="up" class="md-fling md-fab-bottom-right">
+	<md-fab-trigger>
+		<md-button aria-label="Add personalisation" class="md-fab md-primary">
+			<md-tooltip md-direction="left">Add personalisation</md-tooltip>
+			<md-icon md-svg-src="assets/images/icons/add.svg"></md-icon>
+		</md-button>
+	</md-fab-trigger>
+	<md-fab-actions>
+		<div class="md-fab-action-item" ng-repeat="ruleType in ::vm.ruleTypes | reverse track by ruleType.name">
+			<md-button ng-href="/rule/?type={{ ::ruleType.name }}" aria-label="{{ ::ruleType.display_name }}" class="md-fab md-raised md-mini md-fab--custom" ng-class="::ruleType.name">
+				<md-tooltip md-direction="left">{{ ::ruleType.display_name }}</md-tooltip>
+			</md-button>
+		</div>
+	</md-fab-actions>
+</md-fab-speed-dial>

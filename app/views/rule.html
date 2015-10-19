@@ -1,0 +1,42 @@
+<md-content>
+	<form name="vm.ruleForm" ng-submit="vm.saveRule($event)" novalidate layout="column">
+		<md-input-container md-is-error="vm.menuForm.$submitted && vm.menuForm.$invalid" layout-margin layout-padding>
+			<label>What is the name of this rule?</label>
+			<input name="name" ng-model="vm.rule.name" type="text" required />
+			<div ng-if="vm.menuForm.$submitted" ng-messages="vm.menuForm.name.$error">
+				<div ng-message="required">Rule name is required</div>
+			</div>
+		</md-input-container>
+
+		<md-subheader>Personalisation</md-subheader>
+		<md-button type="button" class="column-button" ng-repeat="action in vm.actions" ng-click="vm.editRuleAttribute($event, action)" aria-label="{{ ::action.label }}">
+			<md-icon md-svg-src="assets/images/icons/edit.svg"></md-icon>
+			<span ng-bind="::action.label"></span>
+		</md-button>
+		
+		<md-subheader>Trigger</md-subheader>
+		<md-button type="button" class="column-button" ng-click="vm.editRuleAttribute($event, vm.trigger)" aria-label="{{ ::vm.trigger.label }}">
+			<md-icon md-svg-src="assets/images/icons/edit.svg"></md-icon>
+			<span ng-bind="::vm.trigger.label"></span>
+		</md-button>
+		
+		<md-subheader>Scheduling</md-subheader>
+		<md-button type="button" class="column-button" ng-click="vm.editRuleAttribute($event, vm.schedule)" aria-label="{{ ::vm.schedule.label }}">
+			<md-icon md-svg-src="assets/images/icons/edit.svg"></md-icon>
+			<span ng-bind="::vm.schedule.label"></span>
+		</md-button>
+		
+		<hr />
+
+		<div layout="row" layout-align="end center">
+			<md-button type="button" ng-click="vm.deleteRule()">
+				<md-icon md-svg-src="assets/images/icons/delete.svg"></md-icon>
+				<span class="text">Delete</span>
+			</md-button>
+			<md-button type="submit" class="md-primary md-raised">
+				<md-icon md-svg-src="assets/images/icons/save.svg"></md-icon>
+				<span class="text">Save</span>
+			</md-button>
+		</div>
+	</form>
+</md-content>

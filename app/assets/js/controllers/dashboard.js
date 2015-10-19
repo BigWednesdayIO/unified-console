@@ -1,13 +1,15 @@
-function DashboardController (rulesService, rulesData) {
+function DashboardController (rulesService, ruleTypes, rulesData) {
 	var vm = this;
 
 	vm.rules = rulesData;
+	vm.selectedRule = null;
+	vm.selectRule = function(rule) {
+		vm.selectedRule = (vm.selectedRule && vm.selectedRule.id === rule.id) ? null : rule ;
+	}
 
 	vm.ruleIsPublished = rulesService.ruleIsPublished;
 
-	vm.editRule = function(rule) {
-		return rule.id;
-	};
+	vm.ruleTypes = ruleTypes;
 }
 
 DashboardController.resolve = /* @ngInject */ {

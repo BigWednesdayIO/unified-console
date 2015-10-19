@@ -1,6 +1,8 @@
 function ThemeConfig ($mdThemingProvider) {
 	$mdThemingProvider.theme('default')
-		.primaryPalette('green')
+		.primaryPalette('green', {
+			default: '600'
+		})
 		.accentPalette('grey');
 }
 

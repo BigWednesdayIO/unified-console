@@ -26,7 +26,7 @@ function LoginController ($state, authentication) {
 				password: vm.password
 			})
 			.then(function() {
-				$state.go('dashboard');
+				$state.go('home');
 			}, function(error) {
 				vm.errorMessage = error.message;
 			});

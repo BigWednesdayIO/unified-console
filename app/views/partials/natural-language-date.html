@@ -1,0 +1,19 @@
+<div class="natural-language">
+	<span ng-bind="vm.label"></span>
+	<md-select ng-model="vm.nlDate" ng-change="vm.updateDate()" aria-label="start date" ng-hide="vm.inputCustomDate">
+		<md-option ng-repeat="option in vm.dateOptions" value="{{ option.value }}" ng-bind="::option.label"></md-option>
+	</md-select>
+
+	<input type="date" ng-model="vm.day" ng-blur="vm.customDateSelected()" aria-label="start date" ng-show="vm.inputCustomDate" />
+
+	<div layout="row" layout-align="center center" ng-show="vm.nlDate">
+		<span> at </span>
+		<md-select ng-model="vm.hours" ng-change="vm.updateTime()" aria-label="start time (hours)">
+			<md-option ng-repeat="hour in vm.hoursOfDay" value="{{ hour }}" ng-bind="::hour" ng-selected="{{$first}}"></md-option>
+		</md-select>
+		<span> : </span>
+		<md-select ng-model="vm.minutes" ng-change="vm.updateTime()" aria-label="start time (minutes)">
+			<md-option ng-repeat="min in vm.minutesOfHour" value="{{ min }}" ng-bind="::min" ng-selected="{{$first}}"></md-option>
+		</md-select>
+	</div>
+</div>

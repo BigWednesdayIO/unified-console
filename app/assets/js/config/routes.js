@@ -6,36 +6,43 @@ function RoutingConfig ($stateProvider, $urlRouterProvider, $locationProvider) {
 			resolve: LoginController.resolve,
 			templateUrl: 'views/login.html'
 		})
-		.state('dashboard', {
-			url: '/dashboard',
-			controller: 'DashboardController as vm',
-			resolve: DashboardController.resolve,
-			templateUrl: 'views/dashboard.html'
-		})
-		.state('product-list', {
-			url: '/product-list',
+		.state('personalisation', {
 			views: {
-				'section-heading':  {
-					templateUrl: 'views/partials/products-header.html'
+				'section-heading': {
+					templateUrl: 'views/partials/personalisation-header.html'
 				},
 				'sidebar': {
-					templateUrl: 'views/partials/products-sidebar.html',
-					controller: 'RefinementsController as vm',
-					resolve: RefinementsController.resolve
-				},
-				'': {
-					templateUrl: 'views/product-list.html',
-					controller: 'ProductListController as vm',
-					resolve: ProductListController.resolve
-				},
-				'bottom-drawer': {
-					templateUrl: 'views/partials/basket-drawer.html',
-					controller: 'BasketDrawerController as vm'
+					templateUrl: 'views/partials/menu.html'
 				}
 			}
-		});
+		})
+			.state('home', {
+				parent: 'personalisation',
+				url: '/personalisation/',
+				views: {
+					'@': {
+						templateUrl: 'views/dashboard.html',
+						controller: 'DashboardController as vm',
+						resolve: DashboardController.resolve
+					}
+				}
+			})
+			.state('edit-rule', {
+				parent: 'personalisation',
+				url: '/rule/:id/',
+				views: {
+					'@': {
+						templateUrl: 'views/preview.html'
+					},
+					'sidebar-right@': {
+						templateUrl: 'views/rule.html',
+						controller: 'RuleController as vm',
+						resolve: RuleController.resolve
+					}
+				}
+			});
 
-	$urlRouterProvider.otherwise("/");
+	$urlRouterProvider.otherwise("/personalisation/");
 
 	$locationProvider.html5Mode(true);
 }
