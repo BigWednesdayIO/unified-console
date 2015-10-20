@@ -1,2 +1,2 @@
 angular
-	.module('ucApp', ['ngMaterial', 'ui.router']);
+	.module('ucApp', ['ngMaterial', 'ngMessages', 'ui.router']);

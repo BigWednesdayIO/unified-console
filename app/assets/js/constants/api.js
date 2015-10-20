@@ -5,7 +5,7 @@ function APIConstant () {
 	API.authentication = API.base + 'v1/authentication';
 	API.users = API.base + 'v1/users';
 
-	API.base = 'http://10.35.151.208:3000/';
+	API.base = 'http://localhost:3000/';
 	API.rules = API.base + 'v1/rules';
 
 	return API;

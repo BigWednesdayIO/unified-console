@@ -27,6 +27,20 @@ function RoutingConfig ($stateProvider, $urlRouterProvider, $locationProvider) {
 					}
 				}
 			})
+			.state('new-rule', {
+				parent: 'personalisation',
+				url: '/rule/?type',
+				views: {
+					'@': {
+						templateUrl: 'views/preview.html'
+					},
+					'sidebar-right@': {
+						templateUrl: 'views/rule.html',
+						controller: 'RuleController as vm',
+						resolve: RuleController.resolve
+					}
+				}
+			})
 			.state('edit-rule', {
 				parent: 'personalisation',
 				url: '/rule/:id/',

@@ -9,7 +9,11 @@ function RuleController ($state, rulesService, ruleData) {
 		rulesService
 			.saveRule(vm.rule)
 			.then(function(updatedRule) {
-				vm.rule = updatedRule;
+				if (vm.rule.id) {
+					vm.rule = updatedRule;
+				} else {
+					$state.go('edit-rule', {id: updatedRule.id});
+				}
 			});
 	};
 
@@ -43,10 +47,13 @@ function RuleController ($state, rulesService, ruleData) {
 }
 
 RuleController.resolve = /* @ngInject */ {
-	ruleData: function($stateParams, rulesService) {
+	ruleData: function($state, $stateParams, rulesService) {
 		if ($stateParams.id) {
 			return rulesService
-				.getRule($stateParams.id);
+				.getRule($stateParams.id)
+				.catch(function() {
+					$state.go('home');
+				});
 		}
 		return new rulesService.shellRule($stateParams.type);
 	}

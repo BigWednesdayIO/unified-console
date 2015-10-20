@@ -1,9 +1,9 @@
 <md-content>
 	<form name="vm.ruleForm" ng-submit="vm.saveRule($event)" novalidate layout="column">
-		<md-input-container md-is-error="vm.menuForm.$submitted && vm.menuForm.$invalid" layout-margin layout-padding>
+		<md-input-container md-is-error="vm.ruleForm.$submitted && vm.ruleForm.$invalid" layout-margin layout-padding>
 			<label>What is the name of this rule?</label>
 			<input name="name" ng-model="vm.rule.name" type="text" required />
-			<div ng-if="vm.menuForm.$submitted" ng-messages="vm.menuForm.name.$error">
+			<div ng-show="vm.ruleForm.$submitted" ng-messages="vm.ruleForm.name.$error">
 				<div ng-message="required">Rule name is required</div>
 			</div>
 		</md-input-container>

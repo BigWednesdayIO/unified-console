@@ -21,7 +21,7 @@ function toastService ($mdToast) {
 
 	service.error = function(message, errors) {
 		if (errors) {
-			message += '\n' + errors.join('\n');
+			message += ': ' + errors.join(', ');
 		}
 		$mdToast
 			.show(createToast(message));
