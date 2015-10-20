@@ -7,7 +7,7 @@ function EditRuleAttributeController ($mdDialog, rule, action) {
 
 	vm.confirm = function() {
 		vm.rule.actions = vm.rule.actions.filter(function(action) {
-			return action.parameters.ids.length;
+			return !action.parameters.ids || action.parameters.ids.length;
 		});
 		$mdDialog.hide(vm.rule);
 	};

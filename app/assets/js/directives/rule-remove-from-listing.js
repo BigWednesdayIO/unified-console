@@ -20,7 +20,7 @@ function RuleRemoveFromListingDirective (_) {
 		},
 		controllerAs: 'vm',
 		bindToController: true,
-		template: '<md-chips ng-model="vm.actions[vm.index].parameters.ids" secondary-placeholder="Type something and hit enter"></md-chips>'
+		template: '<md-chips ng-model="vm.actions[vm.index].parameters.ids" secondary-placeholder="Type an id and hit enter"></md-chips>'
 	}	
 }
 
