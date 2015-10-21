@@ -1,4 +1,4 @@
-function DashboardController (rulesService, ruleTypes, rulesData) {
+function DashboardController ($state, rulesService, ruleTypes, rulesData) {
 	var vm = this;
 
 	vm.rules = rulesData;
@@ -26,6 +26,26 @@ function DashboardController (rulesService, ruleTypes, rulesData) {
 				rule.is_published = true;
 			});
 	}
+
+	vm.editRule = function(rule) {
+		$state.go('edit-rule', {id: rule.id});
+	};
+
+	vm.deleteRule = function(ruleToDelete) {
+		rulesService
+			.deleteRule(ruleToDelete)
+			.then(function() {
+				vm.rules = vm.rules.filter(function(rule) {
+					return rule.id !== ruleToDelete.id;
+				})
+			});
+	};
+
+	vm.deleteFilterOnFalse = function() {
+		if (!vm.publishedFilter) {
+			delete vm.publishedFilter;
+		}
+	};
 
 	vm.ruleTypes = ruleTypes;
 }

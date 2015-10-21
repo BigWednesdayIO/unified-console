@@ -46,6 +46,21 @@ function RulesService ($http, $q, $mdDialog, API, toastService, ruleActions) {
 			});
 	};
 
+	service.deleteRule = function(rule) {
+		return $http({
+			method: 'DELETE',
+			url: API.rules + '/' + rule.id,
+			data: rule
+		})
+			.then(function(response) {
+				toastService.success('Rule deleted')
+				return response;
+			}, function(error) {
+				toastService.error('Failed to delete rule', error.messages)
+				return $q.reject(error);
+			});
+	};
+
 	service.publishRule = function(rule) {
 		return $http({
 			method: 'POST',

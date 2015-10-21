@@ -1,17 +1,17 @@
 <div class="action-bar" layout="row" layout-align="end center">
 	<div class="list-actions" layout="row" layout-align="center center">
-		<md-button class="md-icon-button" ng-disabled="!vm.selectedRule" aria-label="Edit selected rule">
+		<md-button class="md-icon-button" ng-disabled="!vm.selectedRule" ng-click="vm.editRule(vm.selectedRule)" aria-label="Edit selected rule">
 			<md-icon md-svg-src="assets/images/icons/edit.svg"></md-icon>
 		</md-button>
-		<md-button class="md-icon-button" ng-disabled="!vm.selectedRule" aria-label="Delete selected rule">
+		<md-button class="md-icon-button" ng-disabled="!vm.selectedRule" ng-click="vm.deleteRule(vm.selectedRule)" aria-label="Delete selected rule">
 			<md-icon md-svg-src="assets/images/icons/delete.svg"></md-icon>
 		</md-button>
-		<md-switch class="md-primary" ng-model="vm.publishedFilter" aria-label="Only show published rules"></md-switch>
+		<md-switch class="md-primary" ng-model="vm.publishedFilter" ng-change="vm.deleteFilterOnFalse()" aria-label="Only show published rules"></md-switch>
 	</div>
 </div>
 
 <md-list>
-	<md-list-item ng-repeat="rule in vm.rules track by rule.id" class="md-2-line rule" ng-class="{'is-active': vm.selectedRule.id === rule.id}" ng-click="vm.selectRule(rule)">
+	<md-list-item ng-repeat="rule in vm.rules | filter: {is_published: vm.publishedFilter} track by rule.id" class="md-2-line rule" ng-class="{'is-active': vm.selectedRule.id === rule.id}" ng-click="vm.selectRule(rule)">
 		<div class="md-avatar md-avatar--placeholder md-primary" ng-class="rule.tags"></div>
 		<div class="md-list-item-text">
 			<h3><a ng-href="rule/{{rule.id}}/" class="rule__name" ng-bind="rule.name"></a></h3>
