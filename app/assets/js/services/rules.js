@@ -1,11 +1,19 @@
 function RulesService ($http, $q, $mdDialog, API, toastService, ruleActions) {
 	var service = this;
 
+	function setPublishedFlag (rule) {
+		rule.is_published = service.ruleIsPublished(rule);
+		return rule;
+	}
+
 	service.getRules = function() {
 		return $http({
 			method: 'GET',
 			url: API.rules
-		});
+		})
+			.then(function(rules) {
+				return rules.map(setPublishedFlag);
+			});
 	};
 
 	service.getRule = function(id) {
@@ -13,6 +21,7 @@ function RulesService ($http, $q, $mdDialog, API, toastService, ruleActions) {
 			method: 'GET',
 			url: API.rules + '/' + id
 		})
+			.then(setPublishedFlag);
 	};
 
 	service.saveRule = function(rule) {
@@ -33,6 +42,42 @@ function RulesService ($http, $q, $mdDialog, API, toastService, ruleActions) {
 				return response;
 			}, function(error) {
 				toastService.error('Failed to save rule', error.messages)
+				return $q.reject(error);
+			});
+	};
+
+	service.publishRule = function(rule) {
+		return $http({
+			method: 'POST',
+			url: API.publishRule,
+			params: {
+				id: rule.id
+			},
+			data: rule
+		})
+			.then(function(response) {
+				toastService.success('Rule published');
+				return response;
+			}, function(error) {
+				toastService.error('Failed to pushlish rule', error.messages);
+				return $q.reject(error);
+			});
+	};
+
+	service.unpublishRule = function(rule) {
+		return $http({
+			method: 'POST',
+			url: API.unpublishRule,
+			params: {
+				id: rule.id
+			},
+			data: rule
+		})
+			.then(function(response) {
+				toastService.success('Rule unpublished');
+				return response;
+			}, function(error) {
+				toastService.error('Failed to unpushlish rule', error.messages);
 				return $q.reject(error);
 			});
 	};
@@ -60,7 +105,7 @@ function RulesService ($http, $q, $mdDialog, API, toastService, ruleActions) {
 	};
 
 	service.ruleIsPublished = function(rule) {
-		return rule.last_published && new Date(rule.last_published) >= new Date(rule.last_updated);
+		return rule.published_at && new Date(rule.published_at) >= new Date(rule.modified_at);
 	};
 
 	service.shellRule = function(type) {

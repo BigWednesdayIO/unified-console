@@ -6,7 +6,7 @@
 		<md-button class="md-icon-button" ng-disabled="!vm.selectedRule" aria-label="Delete selected rule">
 			<md-icon md-svg-src="assets/images/icons/delete.svg"></md-icon>
 		</md-button>
-		<md-switch class="md-primary" ng-model="vm.pausedFilter" aria-label="Show paused rules"></md-switch>
+		<md-switch class="md-primary" ng-model="vm.publishedFilter" aria-label="Only show published rules"></md-switch>
 	</div>
 </div>
 
@@ -23,7 +23,7 @@
 				<span ng-bind="rule.schedule.end"></span>
 			</p>
 		</div>
-		<md-switch class="md-primary md-secondary" ng-model="rule.paused" aria-label="Pause rule"></md-switch>
+		<md-switch class="md-primary md-secondary" ng-model="rule.is_published" ng-change="vm.publishRule(rule)" aria-label="Publish/unpublish rule"></md-switch>
 		<md-divider ng-if="!$last"></md-divider>
 	</md-list-item>
 </md-list>

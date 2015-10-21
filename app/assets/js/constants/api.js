@@ -7,6 +7,8 @@ function APIConstant () {
 
 	API.base = 'http://localhost:3000/';
 	API.rules = API.base + 'v1/rules';
+	API.publishRule = API.base + 'v1/publish-rule';
+	API.unpublishRule = API.base + 'v1/unpublish-rule';
 
 	return API;
 }
