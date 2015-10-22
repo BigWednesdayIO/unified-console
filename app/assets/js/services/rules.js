@@ -6,11 +6,19 @@ function RulesService ($http, $q, $mdDialog, API, toastService, ruleActions) {
 		return rule;
 	}
 
-	service.getRules = function() {
+	service.getRules = function(type) {
 		return $http({
 			method: 'GET',
 			url: API.rules
 		})
+			.then(function(rules) {
+				if (!type) {
+					return rules;
+				}
+				return rules.filter(function(rule) {
+					return rule.tags.indexOf(type) > -1;
+				});
+			})
 			.then(function(rules) {
 				return rules.map(setPublishedFlag);
 			});

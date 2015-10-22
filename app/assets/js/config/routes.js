@@ -12,13 +12,14 @@ function RoutingConfig ($stateProvider, $urlRouterProvider, $locationProvider) {
 					templateUrl: 'views/partials/personalisation-header.html'
 				},
 				'sidebar': {
-					templateUrl: 'views/partials/menu.html'
+					templateUrl: 'views/partials/menu.html',
+					controller: 'MenuController as vm'
 				}
 			}
 		})
 			.state('home', {
 				parent: 'personalisation',
-				url: '/personalisation/',
+				url: '/personalisation/?type',
 				views: {
 					'@': {
 						templateUrl: 'views/dashboard.html',

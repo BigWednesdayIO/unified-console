@@ -51,9 +51,9 @@ function DashboardController ($state, rulesService, ruleTypes, rulesData) {
 }
 
 DashboardController.resolve = /* @ngInject */ {
-	rulesData: function(rulesService) {
+	rulesData: function($stateParams, rulesService) {
 		return rulesService
-			.getRules();
+			.getRules($stateParams.type);
 	}
 };
 
